@@ -11,8 +11,8 @@
 * MySql
 ---
 ### Instalation
-* Install mysqlserver or other db and fill `application.properties` with username and password
-* Create account on `https://mailtrap.io` and set credentials in `application.properties`
+* Install mysqlserver or other db and fill `application.yml` with username and password
+* Create account on `https://mailtrap.io` and set credentials in `application.yml`
 * Install node.js 14 or higher
 ---
 ### Runtime
