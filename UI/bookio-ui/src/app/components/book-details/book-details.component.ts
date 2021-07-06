@@ -27,4 +27,9 @@ export class BookDetailsComponent implements OnInit {
       this.id = +params['bookId'];
     });
   }
+
+  deleteBook(id: number) {
+    id = this.sub;
+    this.bookService.deleteBook(id);
+  }
 }

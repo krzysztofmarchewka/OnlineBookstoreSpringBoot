@@ -18,7 +18,6 @@ export class CartService {
 
   cleanCart() {
     this.cartItems = [];
-    return this.cartItems;
   }
 
   removeProductFromCart(id) {
@@ -27,5 +26,15 @@ export class CartService {
         this.cartItems.splice(index, 1);
       }
     });
+  }
+
+  getTotalPrice() {
+    let total = 0;
+
+    this.cartItems.map((item) => {
+      total += item.price;
+    });
+
+    return total;
   }
 }

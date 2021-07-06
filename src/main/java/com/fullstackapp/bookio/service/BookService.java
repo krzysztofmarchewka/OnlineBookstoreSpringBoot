@@ -33,4 +33,14 @@ public class BookService {
                 .orElseThrow(() -> new BookioException("No book with ID - " + id));
         return book;
     }
+
+    @Transactional
+    public Book updateBook(Book book){
+        return bookRepository.save(book);
+    }
+
+    @Transactional
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
+    }
 }
