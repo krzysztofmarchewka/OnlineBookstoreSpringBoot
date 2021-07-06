@@ -1,6 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BookModel } from 'src/app/model/book.model';
 import { BookService } from 'src/app/service/book.service';
 
@@ -10,59 +9,17 @@ import { BookService } from 'src/app/service/book.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  books: Array<BookModel> = [];
-  public editBook!: BookModel;
+  books: BookModel[] = [];
+  searchValue: string;
 
-  constructor(private bookService: BookService) {
-    this.bookService.getAllBooks().subscribe((book) => (this.books = book));
+  constructor(private bookService: BookService, private router: Router) {}
+
+  ngOnInit() {
+    this.bookService.getAllBooks().subscribe((book) => {
+      this.books = book;
+      console.log(book);
+    });
   }
 
-  ngOnInit(): void {}
-
-  public onAddBook(addForm: NgForm): void {
-    document.getElementById('add-book-form')?.click();
-    this.bookService.addBook(addForm.value).subscribe(
-      (response: BookModel) => {
-        console.log(response);
-        this.bookService.getAllBooks().subscribe((book) => (this.books = book));
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
-  // public onUpdateBook(book: BookModel): void {
-  //   this.bookService.updateBook(book).subscribe(
-  //     (response: BookModel) => {
-  //       console.log(response);
-  //       this.bookService.getAllBooks().subscribe((book) => (this.books = book));
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       alert(error.message);
-  //     }
-  //   );
-  // }
-
-  public onOpenModal(book: BookModel, mode: string): void {
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    if (mode === 'add') {
-      // this.addBook = book;
-      button.setAttribute('data-target', '#addBookModal');
-    }
-    if (mode === 'edit') {
-      this.editBook = book;
-      button.setAttribute('data-target', '#updateBookModal');
-    }
-    if (mode === 'delete') {
-      // this.deleteBook = book;
-      button.setAttribute('data-target', '#deleteBookModal');
-    }
-    container?.appendChild(button);
-    button.click();
-  }
+  addToCart(book: BookModel) {}
 }

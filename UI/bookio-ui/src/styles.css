@@ -3,7 +3,6 @@ html {
   height: 100%;
 }
 body {
-  margin-top: 66px;
   height: 100%;
 }
 
@@ -12,7 +11,9 @@ input.ng-invalid.ng-touched {
 }
 
 .login,
-.sign-up {
+.sign-up,
+.logout,
+.profile {
   background-color: #0079d3;
   border-color: #0079d3;
   color: aliceblue;

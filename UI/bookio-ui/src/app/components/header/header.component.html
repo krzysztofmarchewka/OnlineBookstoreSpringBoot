@@ -1,6 +1,4 @@
-<header>
-  <div class="container-fluid">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <div class="flex-grow-1">
         <a routerLink="/" class="logo" aria-label="Home">
           <img
@@ -25,10 +23,75 @@
           </button>
         </div>
         <div *ngIf="!isLoggedIn">
-          <a routerLink="/signup" class="float-right sign-up mr-2">Sign up</a>
-          <a routerLink="/login" class="float-right login mr-2">Login</a>
+          <a routerLink="/signup" class="float-right sign-up">Sign up</a>
+          <a routerLink="/login" class="float-right login">Login</a>
         </div>
       </div>
-    </nav>
+    </nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a routerLink="/" class="navbar-brand" aria-label="Home">
+    <img
+      src="../../assets/bookio-logo.svg"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+    />
+    <span class="bookio-text"> Bookio - the online bookstore </span>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    class="collapse navbar-collapse d-flex flex-row-reverse"
+    id="navbarSupportedContent"
+  >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item d-flex align-items-center">
+        <a
+          class="nav-link"
+          [routerLink]="['/cart']"
+          routerLinkActive="router-link-active"
+          >Cart<i class="fas fa-shopping-cart"></i
+        ></a>
+      </li>
+      <div *ngIf="isLoggedIn" ngbDropdown class="float-right d-flex">
+        <li class="nav-link" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button class="profile" (click)="goToUserProfile()" ngbDropdownItem>
+            Profile
+          </button>
+        </li>
+        <li class="nav-link" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button class="logout" (click)="logout()" ngbDropdownItem>
+            Logout
+          </button>
+        </li>
+        <li class="nav-link">
+          <button class="userdetails" id="dropdownBasic1" ngbDropdownToggle>
+            <img class="account-icon" src="../../assets/avatar.png" />
+            {{ username }}
+          </button>
+        </li>
+      </div>
+
+      <div *ngIf="!isLoggedIn" class="d-flex">
+        <li class="nav-link">
+          <a routerLink="/signup" class="float-right sign-up">Sign up</a>
+        </li>
+        <li class="nav-link">
+          <a routerLink="/login" class="float-right login">Login</a>
+        </li>
+      </div>
+    </ul>
   </div>
-</header>
+</nav>

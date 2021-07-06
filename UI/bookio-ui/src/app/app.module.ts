@@ -12,6 +12,12 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { CartComponent } from './components/cart/cart.component';
+import { SelectedBookPipe } from './pipes/selected-book.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,11 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     LoginComponent,
     SignupComponent,
+    SearchFilterPipe,
+    BookDetailsComponent,
+    UserProfileComponent,
+    CartComponent,
+    SelectedBookPipe,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

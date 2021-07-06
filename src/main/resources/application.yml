@@ -3,8 +3,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bookio?useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: 7556322
+    username:
+    password:
     initialize: true
   jpa:
     show-sql: true
@@ -17,8 +17,8 @@ spring:
   mail:
     host: smtp.mailtrap.io
     port: 2525
-    username: d302ac443f85e0
-    password: 85da2e0774430c
+    username: 
+    password:
     protocol: smtp
 
 jwt:

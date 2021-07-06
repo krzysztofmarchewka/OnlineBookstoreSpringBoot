@@ -1,0 +1,41 @@
+<div class="container mt-5 mb-5">
+  <h1>Book Details</h1>
+  <div class="card-columns" *ngFor="let book of books | selectedBook: id">
+    <div class="card mb-3">
+      <div class="card-body">
+        <img src="{{ book.imageUrl }}" alt="{{ book.title }}" />
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Title</h5>
+        <p class="card-text">{{ book.title }}</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Author</h5>
+        <p class="card-text">{{ book.author }}</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Publisher</h5>
+        <p class="card-text">{{ book.publisher }}</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Description</h5>
+        <p class="card-text">{{ book.description }}</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Price</h5>
+        <p class="card-text">${{ book.price }}</p>
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-primary" [routerLink]="['/']">Back to Home Page</a>
+</div>

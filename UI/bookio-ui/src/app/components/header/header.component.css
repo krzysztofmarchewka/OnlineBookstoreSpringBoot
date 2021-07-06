@@ -1,12 +1,3 @@
-header {
-  border-radius: 1px solid;
-}
-.bookio-icon {
-  height: 80px;
-  padding: 8px 8px 8px 0;
-  width: 70px;
-}
-
 .bookio-text {
   font-weight: 700;
   height: 50px;
@@ -39,10 +30,6 @@ header {
   padding: 3px 16px;
   opacity: 1;
   border: 0px;
-}
-
-.userdetails:hover {
-  border: 1px solid;
 }
 
 .dropdown-item {
