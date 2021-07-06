@@ -22,7 +22,8 @@
 * Then run `ng serve` to run application on localhost
 * Go to browser `http://localhost:4200`
 #### Usage 
-* Application has full path availability on `http://localhost:8080/swagger-ui.html` (backend server must be running)
-* User can sign up and login, json web token is stored in local storage in web browser (can be checked in devtools)
-* User can add a book, add to cart, make a fake order, check book details, check user details. 
+* Application has full path availability on `http://localhost:8080/swagger-ui.html` (backend server must be running).
+* User can sign up and login, json web token is stored in local storage in web browser (can be checked in devtools).
+* After provide credentials for signing up it is mandatory to activate account via email (mailtrap.io) with requesting on the link in the achieved mail.
+* After above steps user can add a book, add to cart, make a fake order, check book details, check user details. 
 
