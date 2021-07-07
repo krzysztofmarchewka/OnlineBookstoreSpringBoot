@@ -9,6 +9,8 @@
 * Spring Boot
 * Spring Security
 * MySql
+### Payments
+* StripeJs
 ---
 ### Instalation
 * Install mysqlserver or other db and fill `application.yml` with username and password
@@ -26,4 +28,5 @@
 * User can sign up and login, json web token is stored in local storage in web browser (can be checked in devtools).
 * After provide credentials for signing up it is mandatory to activate account via email (mailtrap.io) with requesting on the link in the achieved mail.
 * After above steps user can add a book, add to cart, make a fake order, check book details, check user details. 
+* To unlock payments process user should create account on `www.stripe.com` and provide stripe_key to `environment.ts` file. It provide access to make a fake payment on cart.
 
