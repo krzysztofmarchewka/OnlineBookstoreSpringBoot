@@ -117,6 +117,8 @@
               class="btn btn-warning btn-block btn-lg"
               [routerLink]="['/payment']"
               routerLinkActive="router-link-active"
+              [disabled]="!isLoggedIn"
+              [disabled]="cartItems.length === 0"
             >
               Proceed to Pay
             </button>

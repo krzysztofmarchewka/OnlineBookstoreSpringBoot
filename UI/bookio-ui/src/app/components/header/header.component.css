@@ -1,7 +1,5 @@
 .bookio-text {
   font-weight: 700;
-  height: 50px;
-  width: 50px;
 }
 .logo {
   text-decoration: none;
@@ -32,27 +30,28 @@
   border: 0px;
 }
 
-.dropdown-item {
-  background-color: #f8f9fa;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 18px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.dropdown-item:hover {
-  background-color: #0079d3;
-}
-
-.dropdown-menu {
-  background-color: #f8f9fa;
-}
-
 .account-icon {
   border-radius: 4px;
   float: left;
   margin-right: 5px;
   max-height: 24px;
   max-width: 24px;
+}
+
+@media screen and (max-width: 992px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .bookio-text {
+    font-size: large;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

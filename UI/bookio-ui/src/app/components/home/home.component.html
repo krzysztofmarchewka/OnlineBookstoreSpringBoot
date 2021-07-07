@@ -1,7 +1,7 @@
 <div id="main-container">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4 p-3 text-center">Search your book</h1>
+      <div class="display-3 p-3 text-center">Search your book</div>
       <div class="form-group d-flex justify-content-center">
         <div class="col-md-4 m-2">
           <input
@@ -37,7 +37,14 @@
         </div>
       </div>
       <div class="d-flex flex-row justify-content-center m-3">
-        <button class="btn btn-success mt-4">Add new book</button>
+        <button
+          *ngIf="isLoggedIn"
+          mat-raised-button
+          (click)="openDialog()"
+          class="btn btn-success m-2"
+        >
+          Add new book
+        </button>
       </div>
       <div *ngFor="let book of books">
         <div class="d-flex flex-row justify-content-center">

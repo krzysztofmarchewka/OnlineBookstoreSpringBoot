@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { throwError } from 'rxjs';
 import { BookModel } from 'src/app/model/book.model';
+import { AuthService } from 'src/app/service/auth.service';
 import { BookService } from 'src/app/service/book.service';
+import { Comment } from 'src/app/model/comment.model';
 
 @Component({
   selector: 'app-book-details',
@@ -15,8 +17,18 @@ export class BookDetailsComponent implements OnInit {
   id: number;
   sub: any;
   bookIdSnapshot: number;
+  comments: Comment[] = [];
+  username = this.authService.getUserName();
+  book: BookModel;
 
-  constructor(private route: ActivatedRoute, private bookService: BookService) {
+  commentFC = new FormControl('', Validators.maxLength(150));
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private bookService: BookService,
+    private authService: AuthService
+  ) {
     bookService.getAllBooks().subscribe((data) => {
       this.books = data;
     });
@@ -28,8 +40,27 @@ export class BookDetailsComponent implements OnInit {
     });
   }
 
-  deleteBook(id: number) {
-    id = this.sub;
-    this.bookService.deleteBook(id);
+  deleteBook(bookId) {
+    bookId = this.id;
+    this.bookService.deleteBook(bookId);
+
+    const index: number = this.books.indexOf(bookId);
+    this.books.splice(index, 1);
+
+    this.router.navigateByUrl('/');
+  }
+
+  getBookById() {
+    this.bookService.getBook(this.id).subscribe((data) => {
+      this.book = data;
+    });
+  }
+
+  onCommentChange() {
+    console.log(this.commentFC.value);
+  }
+
+  onAddComment() {
+    this.comments.push(this.commentFC.value);
   }
 }

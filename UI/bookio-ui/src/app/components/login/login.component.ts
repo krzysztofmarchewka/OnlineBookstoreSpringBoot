@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { throwError } from 'rxjs/internal/observable/throwError';
 import { AuthService } from 'src/app/service/auth.service';
 import { LoginRequestPayload } from './login.request.payload';
 
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   loginRequestPayload!: LoginRequestPayload;
   registerSuccessMessage: string;
   isError: boolean;
+  success: boolean;
 
   constructor(
     private authService: AuthService,
@@ -40,22 +42,25 @@ export class LoginComponent implements OnInit {
         this.registerSuccessMessage =
           'Please check Your mail box for activation email ' +
           'activate your account for full access!';
+        this.success = true;
       }
     });
   }
 
   login() {
-    this.loginRequestPayload.username = this.loginForm.get('username')!.value;
-    this.loginRequestPayload.password = this.loginForm.get('password')!.value;
+    this.loginRequestPayload.username = this.loginForm.get('username').value;
+    this.loginRequestPayload.password = this.loginForm.get('password').value;
 
-    this.authService.login(this.loginRequestPayload).subscribe((data) => {
-      if (data) {
+    this.authService.login(this.loginRequestPayload).subscribe(
+      (data) => {
         this.isError = false;
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('');
         this.toastr.success('Login Successful');
-      } else {
+      },
+      (error) => {
         this.isError = true;
+        throwError(error);
       }
-    });
+    );
   }
 }

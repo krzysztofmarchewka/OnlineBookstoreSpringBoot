@@ -18,6 +18,15 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SelectedBookPipe } from './pipes/selected-book.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { AddBookDialogComponent } from './components/add-book-dialog/add-book-dialog.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,18 +40,28 @@ import { SelectedBookPipe } from './pipes/selected-book.pipe';
     UserProfileComponent,
     CartComponent,
     SelectedBookPipe,
+    AddBookDialogComponent,
+    PaymentComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     Ng2SearchPipeModule,
+    FontAwesomeModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [AddBookDialogComponent],
 })
 export class AppModule {}
